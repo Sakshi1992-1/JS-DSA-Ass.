@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Node {
+        constructor(data) {
+          this.data = data;
+          this.next = null;
+        }
+      }
+      class LinkedList {
+        constructor() {
+          this.head = null;
+        }
+        //add the node in linkedlist
+        addNode(data) {
+          var newNode = new Node(data);
+          if (this.head === null) {
+            this.head = newNode;
+          } else {
+            newNode.next = this.head;
+            this.head = newNode;
+          }
+        }
+        //reverse the linkedlist
+        reverseList() {
+          var present = this.head;
+          var previous = null;
+          var next = null;
+
+          while (present) {
+            next = present.next;
+            present.next = previous;
+            previous = present;
+            present = next;
+          }
+          this.head = previous;
+        }
+        printList() {
+          var present = this.head;
+          while (present) {
+            console.log(present.data);
+            present = present.next;
+          }
+        }
+      }
+      //drive the code
+      var list = new LinkedList();
+      list.addNode(4);
+      list.addNode(3);
+      list.addNode(2);
+      list.addNode(1);
+      console.log("Input List is:-");
+      list.printList();
+      list.reverseList();
+      console.log("Reversed List is:-");
+      list.printList();
+    </script>
+  </body>
+</html>

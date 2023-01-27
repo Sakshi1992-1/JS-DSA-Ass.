@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //mearging the 2 linklist in sorted linkedlist
+      // Link List node
+      class Node {
+        constructor(key) {
+          this.key = key;
+          this.next = null;
+        }
+      }
+      function newNode(key) {
+        let temp = new Node(key);
+        return temp;
+      }
+      // List1 l1: 2->1->3
+      // List2 l2: 4->6->5
+
+      let l1 = newNode(2);
+      l1.next = newNode(1);
+      l1.next.next = newNode(3);
+
+      let l2 = newNode(4);
+      l2.next = newNode(6);
+      l2.next.next = newNode(5);
+
+      let value = [];
+      while (l1 != null) {
+        value.push(l1.key);
+        l1 = l1.next;
+      }
+
+      while (l2 != null) {
+        value.push(l2.key);
+        l2 = l2.next;
+      }
+
+      value.sort(function (l1, l2) {
+        return l1 - l2;
+      });
+      let result = newNode(-1);
+      let temp = result;
+      for (let i = 0; i < value.length; i++) {
+        result.next = newNode(value[i]);
+        result = result.next;
+      }
+      temp = temp.next;
+      console.log(" Merge sorted accending order Linked List is :- ");
+      while (temp != null) {
+        console.log(temp.key + " ");
+        temp = temp.next;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Node {
+        constructor(Stuid, Stuname, Stumarks) {
+          this.Stuid = Stuid;
+          this.Stuname = Stuname;
+          this.Stumarks = Stumarks;
+          this.left = null;
+          this.right = null;
+        }
+      }
+      class BST {
+        constructor() {
+          this.root = null;
+        }
+        insert(Stuid, Stuname, Stumarks) {
+          var newNode = new Node(Stuid, Stuname, Stumarks);
+          if (this.root === null) {
+            this.root = newNode;
+          } else {
+            this.insertNode(this.root, newNode);
+          }
+        }
+        insertNode(node, newNode) {
+          if (newNode.percentage < node.percentage) {
+            if (node.left === null) {
+              node.left = newNode;
+            } else {
+              this.insertNode(node.left, newNode);
+            }
+          } else {
+            if (node.right === null) {
+              node.right = newNode;
+            } else {
+              this.insertNode(node.right, newNode);
+            }
+          }
+        }
+        search(name) {
+          return this.searchNode(this.root, name);
+        }
+        searchNode(node, name) {
+          if (node === null) {
+            return null;
+          }
+          if (node.name === name) {
+            return node.marks;
+          }
+        }
+      }
+      var studentData = new BST();
+      studentData.insert(1, "Neha", 25);
+      studentData.insert(2, "Sakshi", 28);
+      studentData.insert(3, "Saurabh", 27);
+      studentData.insert(4, "Love", 27);
+      studentData.insert(5, "Simran", 27);
+      studentData.insert(6, "Shivani", 27);
+      console.log(studentData);
+    </script>
+  </body>
+</html>

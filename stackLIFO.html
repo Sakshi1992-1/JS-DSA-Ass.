@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // the push(s, x) operation:
+      // Enqueue(Push) x to q2.
+      // Dequeue everything from q1 and enqueue to q2.
+      // Swap the queues of q1 and q2.
+      // Follow the below steps to implement the pop(s) operation:
+      // Dequeue(shift) an item from q1 and return it.
+      //-----------Steps----------//
+      // Two queues q1, & q2
+      // Push x first in isEmpty q2
+      // Push all the remaining
+      // elements in q1 to q2.
+      // swap the names of two queues
+      // if no elements are there in q1
+      //return true if the queue is empty.
+
+      class Stack {
+        constructor() {
+          this.q1 = [];
+          this.q2 = [];
+        }
+        push(x) {
+          this.q2.push(x);
+          while (this.q1.length != 0) {
+            this.q2.push(this.q1[0]);
+            this.q1.shift();
+          }
+          this.q = this.q1;
+          this.q1 = this.q2;
+          this.q2 = this.q;
+        }
+        pop() {
+          if (this.q1.length == 0) return;
+          this.q1.shift();
+        }
+        top() {
+          if (this.q1.length == 0) return -1;
+          return this.q1[0];
+        }
+        size() {
+          console.log(this.q1.length);
+        }
+        isEmpty() {
+          return this.q1.length == 0;
+        }
+        front() {
+          return this.q1[0];
+        }
+      }
+      // Drive the code
+      let s = new Stack();
+      s.push(0);
+      s.push(5);
+      console.log("Present size is :-");
+      s.size();
+      console.log(s.top());
+      s.pop();
+      console.log(s.top());
+      console.log("Present size is :-");
+      s.size();
+    </script>
+  </body>
+</html>
